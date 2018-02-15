@@ -2,25 +2,25 @@ var tutorial = tutorial || {};
 
 tutorial.Testable = function () {
 
-    var foo = "bar";
-    var test = "testing";
+    var _foo = "bar";
+    var _test = "testing";
 
-    this.bar = function bar() {
+    this.bar = function () {
         var foo = "baz";
     }
 
-    this.baz = function baz(foo) {
+    this.baz = function (foo) {
         foo = 'test';
         bam = "yay";
     }
 
     this.getFoo = function () {
-        console.log(foo);
-        return foo;
+        console.log(_foo);
+        return _foo;
     }
 
     this.getTest = function () {
-        return test;
+        return _test;
     }
 }
 
