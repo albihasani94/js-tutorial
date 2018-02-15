@@ -21,12 +21,26 @@ tutorial.Testable = function () {
 
 var newObject = {
     name: 'Albi',
-    surname: 'Hasani'
+    surname: 'Hasani',
+    test: function() {
+        console.log("test");
+    },
+    testSelf: function () {
+        var self = this;
+
+        // IIFE pattern
+        (function () {
+            console.log(self.name);
+        })();
+    }
 };
 
-/*
-  static  
-*/
+newObject.testSelf();
+
+/**
+ * static
+ */
+
 tutorial.Testable.doSomething = function () {
     console.log('Called static fuction');
 };
