@@ -3,6 +3,7 @@ var tutorial = tutorial || {};
 tutorial.Testable = function () {
 
     var foo = "bar";
+    var test = "testing";
 
     this.bar = function bar() {
         var foo = "baz";
@@ -17,14 +18,27 @@ tutorial.Testable = function () {
         console.log(foo);
         return foo;
     }
+
+    this.getTest = function () {
+        return test;
+    }
+}
+
+// Add function via prototype
+tutorial.Testable.prototype.testSelf = function () {
+    var self = this;
+    (function () {
+        console.log(self.getTest());
+    })();
+}
+
+tutorial.Testable.prototype.testArrow = function () {
+    (() => console.log(this.getTest()))();
 }
 
 var newObject = {
     name: 'Albi',
     surname: 'Hasani',
-    test: function() {
-        console.log("test");
-    },
     testSelf: function () {
         var self = this;
 
@@ -32,18 +46,25 @@ var newObject = {
         (function () {
             console.log(self.name);
         })();
+    },
+    testArrow: function () {
+        // Arrow function replaces the need for self assignment
+        (() => console.log(this.name))();
     }
 };
 
 newObject.testSelf();
+newObject.testArrow();
 
 /**
  * static
  */
 
 tutorial.Testable.doSomething = function () {
-    console.log('Called static fuction');
+    console.log('Called static function');
 };
+
+tutorial.Testable.doSomething();
 
 var instance = new tutorial.Testable();
 
@@ -52,3 +73,5 @@ instance.bar()
 instance.getFoo() // "bar"
 instance.baz()
 instance.getFoo() // "bar"
+instance.testSelf();
+instance.testArrow();
