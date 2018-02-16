@@ -53,8 +53,8 @@ var newObject = {
     }
 };
 
-newObject.testSelf();
-newObject.testArrow();
+newObject.testSelf(); // "Albi"
+newObject.testArrow(); // "Albi"
 
 /**
  * static
@@ -73,5 +73,9 @@ instance.bar()
 instance.getFoo() // "bar"
 instance.baz()
 instance.getFoo() // "bar"
-instance.testSelf();
-instance.testArrow();
+instance.testSelf(); // "testing"
+instance.testArrow(); // "testing"
+
+tutorial.Testable.prototype.testRuntimeAddedMethod = () => console.log('Created at runtime method');
+
+instance.testRuntimeAddedMethod(); // "Created at runtime method"
