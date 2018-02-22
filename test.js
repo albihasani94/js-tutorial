@@ -79,3 +79,30 @@ instance.testArrow(); // "testing"
 tutorial.Testable.prototype.testRuntimeAddedMethod = () => console.log('Created at runtime method');
 
 instance.testRuntimeAddedMethod(); // "Created at runtime method"
+
+for (var i = 1; i < 5; i++) {
+    setTimeout(function () {
+        console.log("i: " + i); // prints 
+    }, i * 1000);
+};
+
+for (let i = 1; i < 5; i++) {
+    setTimeout(function () {
+        console.log("i: " + i);
+    }, i * 1000);
+};
+
+tutorial.Testable.prototype.modulePattern = (function () {
+
+    return {
+        bar: function () {
+            this.baz()
+        },
+        baz: function () {
+            console.log("baz");
+        }
+    }
+
+})();
+
+instance.modulePattern.bar();
