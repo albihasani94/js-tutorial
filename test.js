@@ -92,7 +92,7 @@ for (let i = 1; i < 5; i++) {
     }, i * 1000);
 };
 
-tutorial.Testable.prototype.modulePattern = (function () {
+tutorial.Testable.prototype.modulePattern = function () {
 
     return {
         bar: function () {
@@ -103,6 +103,6 @@ tutorial.Testable.prototype.modulePattern = (function () {
         }
     }
 
-})();
+};
 
-instance.modulePattern.bar();
+instance.modulePattern().bar();
