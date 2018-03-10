@@ -82,7 +82,7 @@ instance.testRuntimeAddedMethod(); // "Created at runtime method"
 
 for (var i = 1; i < 5; i++) {
     setTimeout(function () {
-        console.log("i: " + i); // prints 
+        console.log("i: " + i);
     }, i * 1000);
 };
 
